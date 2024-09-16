@@ -1,21 +1,18 @@
 package youtube_api
 
-// generate_csv/generate_csv.go:5:2: "encoding/json" imported and not used
-// generate_csv/generate_csv.go:7:2: "io/ioutil" imported and not used
-// generate_csv/generate_csv.go:9:2: "net/url" imported and not used
-// generate_csv/generate_csv.go:10:2: "os" imported and not used
-
 import (
     "encoding/json"
+    "fmt"
     "io/ioutil"
+    "net/http"
     "net/url"
     "os"
     "strings"
 )
 
-func VideoListFromVideosURL(vu *url.URL) (videoListResponse, error) {
+func VideoListFromVideosURL(vu *url.URL) (VideoListResponse, error) {
 
-    var videoList = videoListResponse{}
+    var videoList = VideoListResponse{}
 
     resp, err := http.Get(vu.String())
     if err != nil {
@@ -31,9 +28,9 @@ func VideoListFromVideosURL(vu *url.URL) (videoListResponse, error) {
     return videoList, nil
 }
 
-func SearchListFromSearchURL(su *url.URL) (searchListResponse, error) {
+func SearchListFromSearchURL(su *url.URL) (SearchListResponse, error) {
 
-    var searchList = searchListResponse{}
+    var searchList = SearchListResponse{}
     // fmt.Printf("%s\n", su.String())
 
     resp, err := http.Get(su.String())
