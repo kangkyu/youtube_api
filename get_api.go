@@ -1,6 +1,19 @@
 package youtube_api
 
-func videoListFromVideosURL(vu *url.URL) (videoListResponse, error) {
+// generate_csv/generate_csv.go:5:2: "encoding/json" imported and not used
+// generate_csv/generate_csv.go:7:2: "io/ioutil" imported and not used
+// generate_csv/generate_csv.go:9:2: "net/url" imported and not used
+// generate_csv/generate_csv.go:10:2: "os" imported and not used
+
+import (
+    "encoding/json"
+    "io/ioutil"
+    "net/url"
+    "os"
+    "strings"
+)
+
+func VideoListFromVideosURL(vu *url.URL) (videoListResponse, error) {
 
     var videoList = videoListResponse{}
 
@@ -18,7 +31,7 @@ func videoListFromVideosURL(vu *url.URL) (videoListResponse, error) {
     return videoList, nil
 }
 
-func searchListFromSearchURL(su *url.URL) (searchListResponse, error) {
+func SearchListFromSearchURL(su *url.URL) (searchListResponse, error) {
 
     var searchList = searchListResponse{}
     // fmt.Printf("%s\n", su.String())
@@ -45,7 +58,7 @@ func searchListFromSearchURL(su *url.URL) (searchListResponse, error) {
     return searchList, nil
 }
 
-func searchURL(nextPageToken string, uuid string) *url.URL {
+func SearchURL(nextPageToken string, uuid string) *url.URL {
 
     u, _ := url.Parse("https://www.googleapis.com/youtube/v3/search")
 
@@ -65,7 +78,7 @@ func searchURL(nextPageToken string, uuid string) *url.URL {
     return u
 }
 
-func videosURL(videoIDs []string) *url.URL {
+func VideosURL(videoIDs []string) *url.URL {
 
     u, _ := url.Parse("https://www.googleapis.com/youtube/v3/videos")
 
