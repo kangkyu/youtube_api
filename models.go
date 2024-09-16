@@ -1,6 +1,6 @@
 package youtube_api
 
-type searchListResponse struct {
+type SearchListResponse struct {
     Kind string `json:"kind"`
     NextPageToken string `json:"nextPageToken"`
     Items []searchItem
@@ -24,7 +24,7 @@ type id struct {
     VideoID string `json:"videoId"`
 }
 
-type videoListResponse struct {
+type VideoListResponse struct {
     Kind string `json:"kind"`
     Items []videoItem
 }
