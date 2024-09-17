@@ -56,8 +56,6 @@ func (c *ChannelClient) searchList(nextPageToken string) (*SearchListResponse, e
 		return nil, err
 	}
 
-	req.Header.Set("Authorization", "Bearer "+c.APIKey)
-
 	resp, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
@@ -92,7 +90,6 @@ func (c *ChannelClient) videoList(search *SearchListResponse) (*VideoListRespons
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Authorization", "Bearer "+c.APIKey)
 
 	resp, err := c.HTTPClient.Do(req)
 	if err != nil {
