@@ -26,10 +26,10 @@ type id struct {
 
 type VideoListResponse struct {
 	Kind  string `json:"kind"`
-	Items []videoItem
+	Items []VideoItem
 }
 
-type videoItem struct {
+type VideoItem struct {
 	Kind           string `json:"kind"`
 	ID             string `json:"id"`
 	Snippet        snippet
