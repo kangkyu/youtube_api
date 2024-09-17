@@ -3,7 +3,6 @@ package youtube_api
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"net/url"
 	"os"
@@ -61,14 +60,14 @@ func (c *ChannelClient) searchList(nextPageToken string) (*SearchListResponse, e
 		return nil, err
 	}
 	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("youtube error response: %v", string(body))
-	}
+	//body, err := io.ReadAll(resp.Body)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//if resp.StatusCode != 200 {
+	//	return nil, fmt.Errorf("youtube error response: %v", string(body))
+	//}
 
 	var searchList SearchListResponse
 
@@ -97,14 +96,14 @@ func (c *ChannelClient) videoList(search *SearchListResponse) (*VideoListRespons
 	}
 	defer resp.Body.Close()
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("youtube error response: %v", string(body))
-	}
+	//body, err := io.ReadAll(resp.Body)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//if resp.StatusCode != 200 {
+	//	return nil, fmt.Errorf("youtube error response: %v", string(body))
+	//}
 
 	err = json.NewDecoder(resp.Body).Decode(&videoList)
 	if err != nil {
