@@ -53,17 +53,3 @@ type status struct {
 type contentDetails struct {
 	Duration string `json:"duration"`
 }
-
-func (searchList SearchListResponse) VideoIDs() []string {
-	// items.collect{|item| item.video_id}.compact.uniq.join(",")
-	keys := make(map[string]bool)
-	ids := []string{}
-	for _, item := range searchList.Items {
-		id := item.ID.VideoID
-		if _, value := keys[id]; !value {
-			keys[id] = true
-			ids = append(ids, id)
-		}
-	}
-	return ids
-}
